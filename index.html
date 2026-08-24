@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1200">
+    <title>18 | Il mio diciottesimo</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <!-- GSAP for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+    <!-- Interactive Stars Canvas -->
+    <canvas id="stars-canvas"></canvas>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-content">
+            <span class="preloader-text">18</span>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="particles" id="particles"></div>
+        <div class="hero-content">
+            <h2 class="subtitle hero-anim" id="d-subtitle">Il mio diciottesimo</h2>
+            <h1 class="title hero-anim" id="d-title">18</h1>
+            <p class="tagline hero-anim" id="d-tagline">Un nuovo capitolo sta per iniziare.</p>
+            
+            <div class="hero-details hero-anim">
+                <div class="detail-item">
+                    <span class="detail-label">Data</span>
+                    <span class="detail-value" id="d-date">24 Settembre 2026</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Orario</span>
+                    <span class="detail-value" id="d-time">Ore 20</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Indirizzo</span>
+                    <span class="detail-value" id="d-address">Via SP 84, n. 33</span>
+                </div>
+            </div>
+
+            <a href="#intro" class="cta-btn hero-anim">
+                <span>Scopri l'evento</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="intro" id="intro">
+        <div class="container">
+            <div class="intro-content fade-up">
+                <h3 class="section-title">Benvenuti</h3>
+                <p class="intro-text" id="d-intro">
+                    Ci sono momenti che segnano un confine, un passaggio, un nuovo inizio. Questo � il mio momento.
+                    Sarei felice di condividere con le persone a me pi� care una serata indimenticabile, all'insegna dell'eleganza e del divertimento.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Horizontal Scroller (Quando, Dove, Dress Code) -->
+    <section class="info-scroller" id="info">
+        <div class="scroller-container">
+            <div class="scroller-card">
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </div>
+                <h4>Quando</h4>
+                <p><span id="d-date-scroller">Giovedì, 24 Settembre</span><br><span id="d-time-scroller">Ore 20:00</span></p>
+            </div>
+            
+            <div class="scroller-card">
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </div>
+                <h4>Dove</h4>
+                <p><span id="d-location-name">La Villa Esclusiva</span><br><span id="d-address-scroller">Via SP 84, n. 33</span></p>
+            </div>
+
+            <div class="scroller-card">
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                </div>
+                <h4>Dress Code</h4>
+                <h5 class="gold-text" style="font-size: 1.2rem; margin-bottom: 0.5rem; font-family: var(--font-heading);" id="d-dresscode-title">Black Tie Optional</h5>
+                <p id="d-dresscode-desc">Abbigliamento elegante e formale, preferibilmente toni scuri o neutri.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section class="countdown-section">
+        <div class="container">
+            <h3 class="section-title fade-up">L'Attesa</h3>
+            <div class="countdown fade-up" id="countdown">
+                <div class="time-box">
+                    <span class="time-val" id="days">00</span>
+                    <span class="time-label">Giorni</span>
+                </div>
+                <div class="time-separator">:</div>
+                <div class="time-box">
+                    <span class="time-val" id="hours">00</span>
+                    <span class="time-label">Ore</span>
+                </div>
+                <div class="time-separator">:</div>
+                <div class="time-box">
+                    <span class="time-val" id="minutes">00</span>
+                    <span class="time-label">Minuti</span>
+                </div>
+                <div class="time-separator">:</div>
+                <div class="time-box">
+                    <span class="time-val" id="seconds">00</span>
+                    <span class="time-label">Secondi</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & RSVP -->
+    <section class="location-rsvp" id="location-rsvp">
+        <div class="container">
+            <div class="grid-2">
+                <!-- Location -->
+                <div class="location-box fade-up">
+                    <h3 class="section-title">La Location</h3>
+                    <p class="address-text" id="d-address-location">Via SP 84, n. 33</p>
+                    <a href="https://maps.google.com/?q=Via+SP+84,+n.+33" target="_blank" class="outline-btn">
+                        Apri indicazioni
+                    </a>
+                </div>
+                
+                <!-- RSVP -->
+                <div class="rsvp-box fade-up">
+                    <h3 class="section-title">Conferma</h3>
+                    <p class="rsvp-desc">Ti preghiamo di confermare la tua presenza entro il 10 Settembre.</p>
+                    <form class="rsvp-form" onsubmit="event.preventDefault();">
+                        <div class="form-group">
+                            <select required>
+                                <option value="" disabled selected>Parteciperai?</option>
+                                <option value="yes">Sì, ci sarò</option>
+                                <option value="no">Purtroppo non potrò esserci</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Intolleranze o allergie (Opzionale)">
+                        </div>
+                        <button type="submit" class="cta-btn full-width">
+                            <span>Conferma Presenza</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Finale -->
+    <section class="finale" id="finale">
+        <div class="container fade-up">
+            <p class="finale-text" id="d-finale">Ci vediamo per festeggiare insieme<br>questo nuovo capitolo.</p>
+            <div class="big-18">18</div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-neonull">N E O N U L L</div>
+        <p>&copy; <span id="current-year"></span> | Il mio 18° Compleanno</p>
+    </footer>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBgeYsbOSy0WU0DkVAm5WXpdpR3kGIv6pw",
+            authDomain: "esimo-b3377.firebaseapp.com",
+            projectId: "esimo-b3377",
+            storageBucket: "esimo-b3377.firebasestorage.app",
+            messagingSenderId: "1091271938947",
+            appId: "1:1091271938947:web:5144c6c5b6c359ea5a9cb6"
+        };
+        firebase.initializeApp(firebaseConfig);
+        window.db = firebase.firestore();
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
+
