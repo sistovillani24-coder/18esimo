@@ -169,23 +169,53 @@
                 <div class="rsvp-box fade-up">
                     <h3 class="section-title">Conferma</h3>
                     <p class="rsvp-desc">Ti preghiamo di confermare la tua presenza entro il 10 Settembre.</p>
-                    <form class="rsvp-form" onsubmit="event.preventDefault();">
-                        <div class="form-group">
-                            <select required>
-                                <option value="" disabled selected>Parteciperai?</option>
-                                <option value="yes">Sì, ci sarò</option>
-                                <option value="no">Purtroppo non potrò esserci</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" placeholder="Intolleranze o allergie (Opzionale)">
-                        </div>
-                        <div class="cta-btn-wrap full-width">
-                            <button type="submit" class="cta-btn full-width">
-                                <span>Conferma Presenza</span>
-                            </button>
-                        </div>
-                    </form>
+                    <form class="rsvp-form" onsubmit="inviaWhatsApp(event)">
+    <div class="form-group">
+        <select required id="presenza">
+            <option value="" disabled selected>Parteciperai?</option>
+            <option value="yes">Sì, ci sarò</option>
+            <option value="no">Purtroppo non potrò esserci</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="text" id="allergie" placeholder="Intolleranze o allergie (Opzionale)">
+    </div>
+    <div class="cta-btn-wrap full-width">
+        <button type="submit" class="cta-btn full-width">
+            <span>Conferma Presenza/span>
+        </button>
+    </div>
+</form>
+
+<script>
+function inviaWhatsApp(event) {
+    event.preventDefault();
+    
+    // Recupera i valori inseriti
+    var presenza = document.getElementById('presenza').value;
+    var allergie = document.getElementById('allergie').value;
+    
+    // Crea il messaggio in base alla risposta
+    var messaggio = "";
+    if (presenza === "yes") {
+        messaggio = "Ciao Sisto! Confermo la mia presenza al tuo 18esimo! 🎉";
+    } else {
+        messaggio = "Ciao Sisto, purtroppo non potrò esserci al tuo 18esimo. 😔";
+    }
+    
+    // Aggiunge le allergie se scritte
+    if (allergie.trim() !== "") {
+        messaggio += " (Note/Allergie: " + allergie.trim() + ")";
+    }
+    
+    // Numero di WhatsApp (con il 39 dell'Italia davanti)
+    var numero = "393454697846"; 
+    
+    // Crea e apre il link finale
+    var url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(messaggio);
+    window.open(url, "_blank");
+}
+</script>
                 </div>
             </div>
         </div>
