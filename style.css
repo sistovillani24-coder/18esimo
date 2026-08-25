@@ -832,4 +832,13 @@ section {
     .parallax-bg {
         background-attachment: scroll !important;
     }
+
+    @media (max-width: 768px) {
+    .footer-neonull {
+        font-size: 1.5rem;
+        letter-spacing: 8px;
+        white-space: nowrap;
+    }
 }
+}
+
